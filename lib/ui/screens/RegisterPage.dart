@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
+import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -87,6 +88,7 @@ class RegisterPageState extends State<RegisterPage> {
                     height: 10,
                   ),
                   Material(
+                    color: Colors.transparent,
                     child: GestureDetector(
                       onTap: () => print('taped'),
                       child: Container(
@@ -153,7 +155,10 @@ class RegisterPageState extends State<RegisterPage> {
               "Continuer",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, AppRoutes.phoneVerification);
+            },
           )
         ]).show();
   }

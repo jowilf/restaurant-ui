@@ -115,18 +115,24 @@ class LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 5,
+                              height: 10,
                             ),
-                            FlatButton(
-                                onPressed: () => null,
-                                child: Text(
-                                  StringRes.mot_de_passe_oublie,
-                                  style: TextStyle(
-                                      color: Palette.colorBlueBlack,
-                                      fontSize: 16,
-                                      fontFamily: StringRes.Avenir_Heavy,
-                                      decoration: TextDecoration.underline),
-                                )),
+                            Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                  onTap: () => null,
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                      StringRes.mot_de_passe_oublie,
+                                      style: TextStyle(
+                                          color: Palette.colorBlueBlack,
+                                          fontSize: 16,
+                                          fontFamily: StringRes.Avenir_Heavy,
+                                          decoration: TextDecoration.underline),
+                                    ),
+                                  )),
+                            ),
                             SizedBox(
                               height: 20,
                             ),
