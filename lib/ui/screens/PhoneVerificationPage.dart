@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -111,7 +110,7 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30),
                       ),
-                      onPressed: () => null,
+                      onPressed: () => Navigator.pop(context, true),
                       child: Container(
                         padding: EdgeInsets.all(15),
                         child: Text(
@@ -128,7 +127,6 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
               SizedBox(
                 height: 30,
               ),
-
               Material(
                 color: Colors.transparent,
                 child: InkWell(
@@ -138,20 +136,17 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                     child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                        text:
-                        StringRes.vous_navez_pas_recu_code+"\n",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Palette.greyText),
-                        children: [
-                          TextSpan(
-                            text: StringRes.renvoyer_code,
-                            style: TextStyle(
-                              fontFamily:
-                              StringRes.Avenir_Heavy,
-                              color: Palette.colorPrimary),
-                          )
-                        ]),
+                          text: StringRes.vous_navez_pas_recu_code + "\n",
+                          style:
+                              TextStyle(fontSize: 14, color: Palette.greyText),
+                          children: [
+                            TextSpan(
+                              text: StringRes.renvoyer_code,
+                              style: TextStyle(
+                                  fontFamily: StringRes.Avenir_Heavy,
+                                  color: Palette.colorPrimary),
+                            )
+                          ]),
                     ),
                   ),
                 ),

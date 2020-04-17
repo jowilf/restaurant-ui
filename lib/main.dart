@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nekxolivro/ui/screens/ForgotPasswordPage.dart';
 import 'package:nekxolivro/ui/screens/LoginPage.dart';
 import 'package:nekxolivro/ui/screens/PhoneVerificationPage.dart';
 import 'package:nekxolivro/ui/screens/RegisterPage.dart';
@@ -52,7 +53,9 @@ class MyApp extends StatelessWidget {
     print('-----------------');
     switch (routeName) {
       case AppRoutes.root:
-        return LoginPage();
+        return ForgotPasswordPage();
+      case AppRoutes.forgotPassword:
+        return ForgotPasswordPage();
       case AppRoutes.login:
         return LoginPage();
       case AppRoutes.register:

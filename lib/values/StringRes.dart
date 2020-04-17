@@ -16,7 +16,10 @@ class StringRes {
   static const String verification_numero =
       "Vérification de votre numero de téléphone";
   static const String mot_de_passe_oublie = "Mot de passe oublié?";
+  static const String mot_de_passe_oublie_short_text = "Entrez votre numero de telephone et nous allons vous aider à rénitialiser votre mot de passe";
   static const String mot_de_passe = "Mot de passe";
+  static const String renitialiser_mot_de_passe =
+      "Renitialiser votre mot de passe";
   static const String email = "Email";
   static const String phone = "Numero de téléphone";
   static const String phone_code = "+229";

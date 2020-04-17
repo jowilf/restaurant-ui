@@ -120,7 +120,7 @@ class LoginPageState extends State<LoginPage> {
                             Material(
                               color: Colors.transparent,
                               child: InkWell(
-                                  onTap: () => null,
+                                  onTap: () => Navigator.pushNamed(context, AppRoutes.forgotPassword),
                                   child: Container(
                                     padding: EdgeInsets.all(10),
                                     child: Text(
