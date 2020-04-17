@@ -3,6 +3,7 @@ import 'package:nekxolivro/ui/screens/ForgotPasswordPage.dart';
 import 'package:nekxolivro/ui/screens/LoginPage.dart';
 import 'package:nekxolivro/ui/screens/PhoneVerificationPage.dart';
 import 'package:nekxolivro/ui/screens/RegisterPage.dart';
+import 'package:nekxolivro/ui/screens/ResetPasswordPage.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -53,7 +54,9 @@ class MyApp extends StatelessWidget {
     print('-----------------');
     switch (routeName) {
       case AppRoutes.root:
-        return ForgotPasswordPage();
+        return LoginPage();
+      case AppRoutes.resetPassword:
+        return ResetPasswordPage();
       case AppRoutes.forgotPassword:
         return ForgotPasswordPage();
       case AppRoutes.login:

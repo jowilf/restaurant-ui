@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
@@ -7,12 +6,7 @@ import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  @override
-  State createState() => ForgotPasswordPageState();
-}
-
-class ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class ResetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +28,8 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      StringRes.mot_de_passe_oublie_short_text,
-                      style: Styles.mediumBlueBlackTitle,
+                      StringRes.renitialiser_mot_de_passe,
+                      style: Styles.hugeBlueBlackTitle,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -43,9 +37,15 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     height: 30,
                   ),
                   RoundEditText(
-                    hintText: StringRes.phone,
-                    prefixText: StringRes.phone_code,
-                    inputType: TextInputType.phone,
+                    hintText: StringRes.nouveau_mot_de_passe,
+                    obscureText: true,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  RoundEditText(
+                    hintText: StringRes.confirmer_mot_de_passe,
+                    obscureText: true,
                   ),
                   SizedBox(
                     height: 20,
@@ -60,17 +60,12 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30),
                           ),
-                          onPressed: () async {
-                            final result = await Navigator.pushNamed(
-                                context, AppRoutes.phoneVerification);
-                            print(result);
-                            if (result == true)
-                              Navigator.pushNamed(context, AppRoutes.resetPassword);
-                          },
+                          onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                              context, AppRoutes.login, (r) => false),
                           child: Container(
                             padding: EdgeInsets.all(15),
                             child: Text(
-                              StringRes.confirmer,
+                              StringRes.renitialiser_mot_de_passe,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
