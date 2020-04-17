@@ -20,6 +20,8 @@ class StringRes {
   static const String mot_de_passe = "Mot de passe";
   static const String nouveau_mot_de_passe = "Nouveau mot de passe";
   static const String confirmer_mot_de_passe = "Confirmer le mot de passe";
+  static const String search_home =
+    "Restaurant, Fast Food,  KFC";
   static const String renitialiser_mot_de_passe =
       "Renitialiser votre mot de passe";
   static const String email = "Email";
@@ -37,4 +39,5 @@ class StringRes {
       "En créant votre compte, vous indiquez que vous avez lu et acceptez nos ";
   static const String termes_et_conditions =
       "Conditions générales d'utilisation";
+
 }

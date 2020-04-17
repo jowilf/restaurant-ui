@@ -134,9 +134,17 @@ class RegisterPageState extends State<RegisterPage> {
   }
 
   void register(BuildContext context) {
+    var alertStyle = AlertStyle(
+      descStyle: TextStyle(fontWeight: FontWeight.bold),
+      overlayColor: Colors.black54,
+      alertBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+    );
     Alert(
         context: context,
         title: "Nous allons vérifier votre numero",
+        style: alertStyle,
         content: RichText(
             textAlign: TextAlign.center,
             text: TextSpan(

@@ -9,7 +9,7 @@ class RoundEditText extends StatefulWidget {
   TextEditingController controller = TextEditingController();
 
   RoundEditText(
-      {this.hintText,
+      {this.hintText = "",
       this.inputType,
       this.obscureText,
       this.prefixText,
@@ -48,8 +48,12 @@ class RoundEditTextState extends State<RoundEditText> {
             this.setState(() => canShowPrefix = newValue != ""),
         style: TextStyle(fontSize: 16),
         decoration: InputDecoration(
-            prefixText: (canShowPrefix && prefixText != null) ? prefixText +"  ": "",
-            prefixStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.bold, color: Palette.colorSecondary),
+            prefixText:
+                (canShowPrefix && prefixText != null) ? prefixText + "  " : "",
+            prefixStyle: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: Palette.colorSecondary),
             border: InputBorder.none,
             hintText: hintText != null ? hintText : ""),
       ),

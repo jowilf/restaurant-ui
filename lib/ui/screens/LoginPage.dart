@@ -126,7 +126,7 @@ class LoginPageState extends State<LoginPage> {
                                     child: Text(
                                       StringRes.mot_de_passe_oublie,
                                       style: TextStyle(
-                                          color: Palette.colorBlueBlack,
+                                          color: Palette.colorBlue,
                                           fontSize: 16,
                                           fontFamily: StringRes.Avenir_Heavy,
                                           decoration: TextDecoration.underline),
