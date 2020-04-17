@@ -39,10 +39,21 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
               SizedBox(
                 height: 20,
               ),
-              Text(
-                StringRes.en_attente_otp + "62374698",
-                style: Styles.smallTextGreyBold,
-                textAlign: TextAlign.center,
+              Container(
+                padding: EdgeInsets.all(10),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      text: StringRes.en_attente_otp,
+                      style: TextStyle(color: Palette.greyText, fontSize: 15),
+                      children: [
+                        TextSpan(
+                            text: "62374698",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Palette.colorBlueBlack))
+                      ]),
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -56,7 +67,7 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                       child: Text(
                         StringRes.changer_le_num,
                         style: TextStyle(
-                            color: Palette.colorPrimary,
+                            color: Palette.colorBlue,
                             fontSize: 16,
                             fontFamily: StringRes.Avenir_Heavy),
                       ),

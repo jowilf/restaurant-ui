@@ -104,7 +104,7 @@ class RegisterPageState extends State<RegisterPage> {
                                   text: StringRes.termes_et_conditions,
                                   style: TextStyle(
                                       fontFamily: StringRes.Avenir_Heavy,
-                                      color: Palette.colorPrimary),
+                                      color: Palette.colorBlue),
                                 )
                               ]),
                         ),
