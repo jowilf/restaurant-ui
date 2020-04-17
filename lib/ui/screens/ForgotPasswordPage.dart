@@ -65,7 +65,8 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 context, AppRoutes.phoneVerification);
                             print(result);
                             if (result == true)
-                              Navigator.pushNamed(context, AppRoutes.resetPassword);
+                              Navigator.pushNamed(
+                                  context, AppRoutes.resetPassword);
                           },
                           child: Container(
                             padding: EdgeInsets.all(15),
