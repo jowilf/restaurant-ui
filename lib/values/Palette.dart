@@ -11,5 +11,5 @@ class Palette {
   static const colorGrey = Color(0xfff1f2f6);
   static const greyText = Color(0xffA7A7A7);
   static const greyDark = Color(0xffD2D1D7);
-  static const whiteBackGround = Color(0xffffff);
+  static const whiteBackGround = Color(0xffffffff);
 }

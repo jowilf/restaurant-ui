@@ -16,106 +16,97 @@ class RegisterPage extends StatefulWidget {
 class RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
+    //FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return Scaffold(
       backgroundColor: Palette.whiteBackGround,
-      body: SafeArea(
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(color: Colors.white),
-              height: double.infinity,
+            SizedBox(
+              height: 20,
             ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: Text(
-                      StringRes.inscrivez_vous,
-                      style: Styles.hugeBlueBlackTitle,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  RoundEditText(hintText: StringRes.nom),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RoundEditText(
-                    hintText: StringRes.phone,
-                    prefixText: StringRes.phone_code,
-                    inputType: TextInputType.phone,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RoundEditText(
-                    hintText: StringRes.mot_de_passe,
-                    obscureText: true,
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: FlatButton(
-                          color: Palette.colorPrimary,
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30),
-                          ),
-                          onPressed: () => register(context),
-                          child: Container(
-                            padding: EdgeInsets.all(15),
-                            child: Text(
-                              StringRes.s_inscrire,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontFamily: StringRes.Avenir_Light,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Material(
-                    color: Colors.transparent,
-                    child: GestureDetector(
-                      onTap: () => print('taped'),
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                              text: StringRes.text_avant_conditions,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Palette.greyText,
-                                  fontFamily: StringRes.Avenir_Book),
-                              children: [
-                                TextSpan(
-                                  text: StringRes.termes_et_conditions,
-                                  style: TextStyle(
-                                      fontFamily: StringRes.Avenir_Heavy,
-                                      color: Palette.colorBlue),
-                                )
-                              ]),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+            Center(
+              child: Text(
+                StringRes.inscrivez_vous,
+                style: Styles.hugeBlueBlackTitle,
               ),
             ),
+            SizedBox(
+              height: 30,
+            ),
+            RoundEditText(hintText: StringRes.nom),
+            SizedBox(
+              height: 10,
+            ),
+            RoundEditText(
+              hintText: StringRes.phone,
+              prefixText: StringRes.phone_code,
+              inputType: TextInputType.phone,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            RoundEditText(
+              hintText: StringRes.mot_de_passe,
+              obscureText: true,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                width: double.infinity,
+                child: FlatButton(
+                    color: Palette.colorPrimary,
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30),
+                    ),
+                    onPressed: () => register(context),
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      child: Text(
+                        StringRes.s_inscrire,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontFamily: StringRes.Avenir_Light,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Material(
+              color: Colors.transparent,
+              child: GestureDetector(
+                onTap: () => print('taped'),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: StringRes.text_avant_conditions,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Palette.greyText,
+                            fontFamily: StringRes.Avenir_Book),
+                        children: [
+                          TextSpan(
+                            text: StringRes.termes_et_conditions,
+                            style: TextStyle(
+                                fontFamily: StringRes.Avenir_Heavy,
+                                color: Palette.colorBlue),
+                          )
+                        ]),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

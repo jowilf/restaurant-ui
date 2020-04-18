@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
@@ -17,71 +18,61 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.whiteBackGround,
-      body: SafeArea(
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(color: Colors.white),
-              height: double.infinity,
+            SizedBox(
+              height: 20,
             ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                StringRes.mot_de_passe_oublie_short_text,
+                style: Styles.mediumBlueBlackTitle,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            RoundEditText(
+              hintText: StringRes.phone,
+              prefixText: StringRes.phone_code,
+              inputType: TextInputType.phone,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                width: double.infinity,
+                child: FlatButton(
+                  color: Palette.colorPrimary,
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10),
+                  onPressed: () async {
+                    final result = await Navigator.pushNamed(
+                      context, AppRoutes.phoneVerification);
+                    print(result);
+                    if (result == true)
+                      Navigator.pushNamed(
+                        context, AppRoutes.resetPassword);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(15),
                     child: Text(
-                      StringRes.mot_de_passe_oublie_short_text,
-                      style: Styles.mediumBlueBlackTitle,
-                      textAlign: TextAlign.center,
+                      StringRes.confirmer,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: StringRes.Avenir_Light,
+                        fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  RoundEditText(
-                    hintText: StringRes.phone,
-                    prefixText: StringRes.phone_code,
-                    inputType: TextInputType.phone,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: FlatButton(
-                          color: Palette.colorPrimary,
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30),
-                          ),
-                          onPressed: () async {
-                            final result = await Navigator.pushNamed(
-                                context, AppRoutes.phoneVerification);
-                            print(result);
-                            if (result == true)
-                              Navigator.pushNamed(
-                                  context, AppRoutes.resetPassword);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(15),
-                            child: Text(
-                              StringRes.confirmer,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontFamily: StringRes.Avenir_Light,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                  ),
-                ],
+                  )),
               ),
             ),
           ],

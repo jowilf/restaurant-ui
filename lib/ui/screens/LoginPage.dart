@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
@@ -14,6 +15,7 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    //FlutterStatusbarcolor.setStatusBarColor(Colors.blue);
     return Scaffold(
       backgroundColor: Palette.whiteBackGround,
       body: SafeArea(
