@@ -120,7 +120,8 @@ class LoginPageState extends State<LoginPage> {
                             Material(
                               color: Colors.transparent,
                               child: InkWell(
-                                  onTap: () => Navigator.pushNamed(context, AppRoutes.forgotPassword),
+                                  onTap: () => Navigator.pushNamed(
+                                      context, AppRoutes.forgotPassword),
                                   child: Container(
                                     padding: EdgeInsets.all(10),
                                     child: Text(
@@ -139,7 +140,8 @@ class LoginPageState extends State<LoginPage> {
                             Material(
                               color: Colors.transparent,
                               child: InkWell(
-                                onTap: () => Navigator.pushNamed(context, AppRoutes.register),
+                                onTap: () => Navigator.pushNamed(
+                                    context, AppRoutes.register),
                                 child: Container(
                                   padding: EdgeInsets.all(10),
                                   child: RichText(
@@ -148,7 +150,8 @@ class LoginPageState extends State<LoginPage> {
                                             StringRes.vous_navez_pas_de_compte,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            color: Palette.greyText),
+                                            color: Palette.greyText,
+                                            fontFamily: StringRes.Avenir_Book),
                                         children: [
                                           TextSpan(
                                             text: StringRes.s_inscrire,

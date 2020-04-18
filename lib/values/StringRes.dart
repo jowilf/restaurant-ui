@@ -21,7 +21,7 @@ class StringRes {
   static const String nouveau_mot_de_passe = "Nouveau mot de passe";
   static const String confirmer_mot_de_passe = "Confirmer le mot de passe";
   static const String search_home =
-    "Restaurant, Fast Food,  KFC";
+    "Restaurants ou cuisines";
   static const String renitialiser_mot_de_passe =
       "Renitialiser votre mot de passe";
   static const String email = "Email";

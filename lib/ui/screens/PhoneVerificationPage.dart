@@ -45,7 +45,10 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                       text: StringRes.en_attente_otp,
-                      style: TextStyle(color: Palette.greyText, fontSize: 15),
+                      style: TextStyle(
+                          color: Palette.greyText,
+                          fontSize: 15,
+                          fontFamily: StringRes.Avenir_Book),
                       children: [
                         TextSpan(
                             text: "62374698",
@@ -148,8 +151,10 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           text: StringRes.vous_navez_pas_recu_code + "\n",
-                          style:
-                              TextStyle(fontSize: 14, color: Palette.greyText),
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Palette.greyText,
+                              fontFamily: StringRes.Avenir_Book),
                           children: [
                             TextSpan(
                               text: StringRes.renvoyer_code,

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nekxolivro/ui/components/FoodView.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -12,6 +14,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return Scaffold(
         backgroundColor: Palette.whiteBackGround,
         body: SafeArea(
@@ -42,8 +45,7 @@ class HomePageState extends State<HomePage> {
                           text: TextSpan(
                             style: TextStyle(
                               color: Palette.greyText,
-                              fontFamily: StringRes.Avenir_Light,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: StringRes.Avenir_Book,
                               fontSize: 15,
                             ),
                             children: [
@@ -65,13 +67,12 @@ class HomePageState extends State<HomePage> {
                     height: 5,
                   ),
                   SingleChildScrollView(
-                      child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        child: Row(
+                      child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Expanded(
@@ -86,6 +87,7 @@ class HomePageState extends State<HomePage> {
                               ),
                             ),
                             Material(
+                              color: Colors.transparent,
                               child: InkWell(
                                 onTap: () => Navigator.pushNamed(
                                     context, AppRoutes.login),
@@ -112,8 +114,18 @@ class HomePageState extends State<HomePage> {
                             )
                           ],
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ListView.separated(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (_, index) => FoodView(),
+                          separatorBuilder: (_, __) => Divider(height: 2,color: Palette.greyDark,),
+                          itemCount: 3,
+                        ),
+                      ],
+                    ),
                   ))
                 ],
               ),

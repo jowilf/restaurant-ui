@@ -98,7 +98,9 @@ class RegisterPageState extends State<RegisterPage> {
                           text: TextSpan(
                               text: StringRes.text_avant_conditions,
                               style: TextStyle(
-                                  fontSize: 14, color: Palette.greyText),
+                                  fontSize: 14,
+                                  color: Palette.greyText,
+                                  fontFamily: StringRes.Avenir_Book),
                               children: [
                                 TextSpan(
                                   text: StringRes.termes_et_conditions,
@@ -149,7 +151,10 @@ class RegisterPageState extends State<RegisterPage> {
             textAlign: TextAlign.center,
             text: TextSpan(
                 text: "Êtes vous sur que le numero",
-                style: TextStyle(fontSize: 15, color: Palette.greyText),
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Palette.greyText,
+                    fontFamily: StringRes.Avenir_Book),
                 children: [
                   TextSpan(
                       text: " 62374698 ",
