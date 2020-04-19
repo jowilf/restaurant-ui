@@ -25,7 +25,7 @@ class HomeAppBar extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         "Livré à",
-                        style: TextStyle(color: Palette.greyText, fontSize: 16),
+                        style: TextStyle(color: Palette.greyText, fontSize: 16,fontFamily: StringRes.Avenir_Heavy),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2.0),
@@ -110,19 +110,17 @@ class HomeAppBar extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.only(left: 0, right: 10),
-                child: ClipOval(
-                  child: Material(
-                    color: Colors.transparent, // button color
-                    child: InkWell(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Icon(
-                          Icons.filter_list,
-                          color: Palette.colorPrimary,
-                        ),
+                child: Material(
+                  color: Colors.transparent, // button color
+                  child: InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Icon(
+                        Icons.filter_list,
+                        color: Palette.colorPrimary,
                       ),
-                      onTap: () {},
                     ),
+                    onTap: () {},
                   ),
                 ),
               )
