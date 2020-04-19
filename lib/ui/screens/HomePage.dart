@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:nekxolivro/ui/components/FoodHorizontal.dart';
 import 'package:nekxolivro/ui/components/FoodView.dart';
 import 'package:nekxolivro/ui/components/HomeAppBar.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
@@ -26,8 +27,10 @@ class HomePageState extends State<HomePage> {
               child: CustomScrollView(
                 slivers: [
                   SliverList(
-                    delegate:
-                        SliverChildListDelegate([populaireTitle(context)]),
+                    delegate: SliverChildListDelegate([
+                      sectionTitle(
+                          context, "Populaire cette semaine", AppRoutes.login)
+                    ]),
                   ),
                   SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
@@ -39,6 +42,23 @@ class HomePageState extends State<HomePage> {
                         index: index,
                       );
                     }, childCount: 3 * 2 + 1),
+                  ),
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      sectionTitle(
+                          context, "Tendances du moment", AppRoutes.login)
+                    ]),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Container(
+                      height: 200,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return FoodHorizontal();
+                          }),
+                    ),
                   )
                 ],
               ),
@@ -72,14 +92,14 @@ class HomePageState extends State<HomePage> {
         ));
   }
 
-  Widget populaireTitle(context) => Padding(
+  Widget sectionTitle(context, leftText, routeName) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Expanded(
               child: Text(
-                "Populaire cette semaine",
+                leftText,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -91,7 +111,7 @@ class HomePageState extends State<HomePage> {
             Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: () => Navigator.pushNamed(context, AppRoutes.login),
+                onTap: () => Navigator.pushNamed(context, routeName),
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   child: RichText(
