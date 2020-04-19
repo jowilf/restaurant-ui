@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -14,7 +15,7 @@ class FoodView extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () => null,
+        onTap: () =>Navigator.pushNamed(context, AppRoutes.restoDetail),
         child: Container(
           padding: EdgeInsets.all(5),
           child: Row(

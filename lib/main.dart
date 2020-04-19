@@ -6,6 +6,7 @@ import 'package:nekxolivro/ui/screens/LoginPage.dart';
 import 'package:nekxolivro/ui/screens/PhoneVerificationPage.dart';
 import 'package:nekxolivro/ui/screens/RegisterPage.dart';
 import 'package:nekxolivro/ui/screens/ResetPasswordPage.dart';
+import 'package:nekxolivro/ui/screens/RestoDetailPage.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -67,6 +68,8 @@ class MyApp extends StatelessWidget {
         return RegisterPage();
       case AppRoutes.phoneVerification:
         return PhoneVerificationPage();
+      case AppRoutes.restoDetail:
+        return RestoDetailPage();
     }
   }
 }
