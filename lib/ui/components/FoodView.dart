@@ -90,7 +90,7 @@ class FoodView extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(2),
                       child: Text(
-                        "-10%",
+                        "Petit Prince",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 10,

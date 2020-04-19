@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:nekxolivro/ui/components/FoodView.dart';
+import 'package:nekxolivro/ui/components/HomeAppBar.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -16,100 +16,60 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     //FlutterStatusbarcolor.setStatusBarColor(Colors.white);
-    return DefaultStickyHeaderController(
-      child: Scaffold(
-          backgroundColor: Palette.whiteBackGround,
-          body: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: CustomScrollView(slivers: <Widget>[
-              SliverStickyHeader(
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate((context, index) {
-                    if (index == 0) return populaireTitle(context);
-                    if (index.isEven)
-                      return Divider(
-                        color: Palette.greyDark,
-                      );
-                    return FoodView(
-                      index: index,
-                    );
-                  }, childCount: 4 * 2),
-                ),
-                header: Container(
-                  color: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
-                          child: Material(
-                            color: Palette.colorGrey,
-                            child: InkWell(
-                              onTap: () {},
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 15),
-                                child: RichText(
-                                  overflow: TextOverflow.ellipsis,
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      color: Palette.greyText,
-                                      fontFamily: StringRes.Avenir_Book,
-                                      fontSize: 16,
-                                    ),
-                                    children: [
-                                      WidgetSpan(
-                                          child: Icon(
-                                        Icons.search,
-                                        size: 17,
-                                        color: Palette.greyText,
-                                      )),
-                                      TextSpan(text: " "),
-                                      TextSpan(text: StringRes.search_home)
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 5, right: 10),
-                        child: ClipOval(
-                          child: Material(
-                            color: Palette.colorGrey, // button color
-                            child: InkWell(
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Icon(
-                                  Icons.filter_list,
-                                  color: Palette.colorPrimary,
-                                ),
-                              ),
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
+    return Scaffold(
+        backgroundColor: Palette.whiteBackGround,
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            HomeAppBar(),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate:
+                        SliverChildListDelegate([populaireTitle(context)]),
                   ),
-                ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((context, index) {
+                      if (index.isEven)
+                        return Divider(
+                          color: Palette.greyDark,
+                        );
+                      return FoodView(
+                        index: index,
+                      );
+                    }, childCount: 3 * 2 + 1),
+                  )
+                ],
               ),
-            ]),
-          ),
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(0.0),
-            child: AppBar(
-                centerTitle: false,
-                automaticallyImplyLeading: true,
-                elevation: 0.0,
-                backgroundColor: Colors.white,
-                title: Text("")),
-          )),
-    );
+            ),
+            /*Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  populaireTitle(context),
+                  for (int i = 0; i < 13; i++)
+                    FoodView(
+                      index: i,
+                    ),
+                  Divider(),
+                ],
+              ),
+            ),
+            */ /*Expanded(
+              child: ListView.builder(shrinkWrap: true,scrollDirection:Axis.horizontal,itemBuilder: (context,index)=>FoodHorizontal(),itemCount: 5,),
+            )*/
+          ],
+        ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(0.0),
+          child: AppBar(
+              centerTitle: false,
+              automaticallyImplyLeading: true,
+              elevation: 0.0,
+              backgroundColor: Colors.white,
+              title: Text("")),
+        ));
   }
 
   Widget populaireTitle(context) => Padding(
@@ -178,3 +138,22 @@ class HomePageState extends State<HomePage> {
                       ],
                     ),
                   ))*/
+/* child: CustomScrollView(slivers: <Widget>[
+                    SliverStickyHeader(
+                      sliver: SliverList(
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          if (index == 0) return populaireTitle(context);
+                          if (index.isEven)
+                            return Divider(
+                              color: Palette.greyDark,
+                            );
+                          return FoodView(
+                            index: index,
+                          );
+                        }, childCount: 4 * 2),
+                      ),
+                      header:
+                  ]),
+                  child: SliverList(
+                    delegate: ,
+                  ),*/
