@@ -10,6 +10,7 @@ class StringRes {
   static const String voulez_vous_utiliser = "Voulez-vous utiliser ce code ";
   static const String se_connecter = "Se connecter";
   static const String confirmer = "Confirmer";
+  static const String ajouter_au_panier = "Ajouter au panier";
   static const String s_inscrire = "S'inscrire";
   static const String inscrivez_vous = "Inscrivez-vous";
   static const String renvoyer_code = "Renvoyer un nouveau code";

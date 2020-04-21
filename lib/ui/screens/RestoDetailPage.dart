@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nekxolivro/ui/components/FoodView.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nekxolivro/ui/components/RestoFoodView.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
+import 'package:nekxolivro/values/Styles.dart';
 
 class RestoDetailPage extends StatefulWidget {
   @override
@@ -12,51 +14,45 @@ class RestoDetailPage extends StatefulWidget {
 class RestoDetailPageState extends State<RestoDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Palette.whiteBackGround,
-        body: CustomScrollView(slivers: <Widget>[
-          /*SliverAppBar(
-            title: Text("Mimi's"),
-            expandedHeight: 250,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                Res.login_back,
-                fit: BoxFit.cover,
-              ),
+    List<Widget> children = [];
+    List<String> plats = ["Entrées", "Résistant", "Déssert", "Boissons"];
+    children.add(SliverPersistentHeader(
+      pinned: true,
+      delegate: MyDynamicHeader(),
+    ));
+    for (String plat in plats) {
+      children.add(SliverList(
+        delegate: SliverChildListDelegate([
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              plat,
+              style: Styles.mediumBlueBlackTitle,
             ),
-          ),*/
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: MyDynamicHeader(),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              if (index > 0 && !index.isEven)
-                return Divider(
-                  color: Palette.greyDark,
-                );
-              return FoodView(
-                index: index,
-              );
-            }, childCount: 30 * 2 + 1),
-          ),
-        ]));
+          )
+        ]),
+      ));
+      children.add(SliverList(
+        delegate: SliverChildBuilderDelegate((context, index) {
+          return RestoFoodView();
+        }, childCount: 4),
+      ));
+    }
+    return Scaffold(
+        backgroundColor: Palette.colorGrey,
+        body: CustomScrollView(slivers: children));
   }
 }
 
 class MyDynamicHeader extends SliverPersistentHeaderDelegate {
-  int index = 0;
   double percentage = 1;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return LayoutBuilder(builder: (context, constraints) {
-      final Color color = Colors.primaries[index];
       final double percentage =
           (constraints.maxHeight - minExtent) / (maxExtent - minExtent);
-
-      if (++index > Colors.primaries.length - 1) index = 0;
       return Stack(
         children: <Widget>[
           Container(
@@ -74,10 +70,63 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
           Opacity(
               opacity: percentage > 0.2 ? 0 : -5 * percentage + 1,
               child: appBar(context)),
+          Opacity(
+              opacity: percentage < 0.5 ? 0 : 2 * percentage - 1,
+              child: expandedAppBar(context)),
         ],
       );
     });
   }
+
+  Widget expandedAppBar(context) => Container(
+        width: double.infinity,
+        height: minExtent,
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        //color: Colors.blue,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Row(
+            children: <Widget>[
+              ClipOval(
+                child: Material(
+                  elevation: 5,
+                  color: Colors.white, // button color
+                  child: InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(
+                        Res.backIcon,
+                        size: 26,
+                        color: Palette.colorPrimary,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                ),
+              ),
+              Spacer(),
+              ClipOval(
+                child: Material(
+                  elevation: 5,
+                  color: Colors.white, // button color
+                  child: InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SvgPicture.asset(
+                        Res.search_icon,
+                        color: Palette.colorPrimary,
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 
   Widget appBar(context) => AppBar(
       centerTitle: false,

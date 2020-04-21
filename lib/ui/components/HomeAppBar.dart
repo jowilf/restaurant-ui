@@ -24,7 +24,7 @@ class HomeAppBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Livré à",
+                        "Livraison à",
                         style: TextStyle(color: Palette.greyText, fontSize: 16,fontFamily: StringRes.Avenir_Heavy),
                       ),
                       Padding(

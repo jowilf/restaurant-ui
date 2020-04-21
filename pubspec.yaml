@@ -23,6 +23,7 @@ dependencies:
   pin_code_fields: ^2.5.1
   flutter_statusbarcolor: ^0.2.3
   flutter_sticky_header: ^0.4.2
+  flutter_svg: ^0.17.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,6 +49,9 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
+    - assets/images/svg/search.svg
+    - assets/images/svg/plus_circle.svg
+    - assets/images/svg/minus_circle.svg
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

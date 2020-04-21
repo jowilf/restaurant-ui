@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nekxolivro/ui/screens/FoodDetailPage.dart';
 import 'package:nekxolivro/ui/screens/ForgotPasswordPage.dart';
 import 'package:nekxolivro/ui/screens/HomePage.dart';
 import 'package:nekxolivro/ui/screens/LoginPage.dart';
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white.withOpacity(0.4));
     return MaterialApp(
       title: 'Nekxo Livro',
       debugShowCheckedModeBanner: false,
@@ -70,6 +73,8 @@ class MyApp extends StatelessWidget {
         return PhoneVerificationPage();
       case AppRoutes.restoDetail:
         return RestoDetailPage();
+      case AppRoutes.foodDetail:
+        return FoodDetailPage();
     }
   }
 }

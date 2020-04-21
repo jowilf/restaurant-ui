@@ -63,22 +63,6 @@ class HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            /*Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  populaireTitle(context),
-                  for (int i = 0; i < 13; i++)
-                    FoodView(
-                      index: i,
-                    ),
-                  Divider(),
-                ],
-              ),
-            ),
-            */ /*Expanded(
-              child: ListView.builder(shrinkWrap: true,scrollDirection:Axis.horizontal,itemBuilder: (context,index)=>FoodHorizontal(),itemCount: 5,),
-            )*/
           ],
         ),
         appBar: PreferredSize(
