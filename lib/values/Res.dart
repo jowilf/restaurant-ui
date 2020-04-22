@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'JIcon.dart';
+
 class Res {
   static const login_back = 'assets/images/login_back.jpg';
   static const search_icon = 'assets/images/svg/search.svg';

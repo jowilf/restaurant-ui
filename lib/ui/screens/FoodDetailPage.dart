@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:nekxolivro/values/JIcon.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -75,56 +74,36 @@ class FoodDetailPageState extends State<FoodDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                ClipOval(
-                  child: Material(
-                    color: Colors.white, // button color
-                    child: InkWell(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          Res.minus_circle,
-                          color: Palette.colorPrimary,
-                          width: 24,
-                          height: 24,
-                        ),
-                      ),
-                      onTap: () {
-                        if (quantity > 1)
-                          setState(() {
-                            quantity -= 1;
-                          });
-                      },
-                    ),
+                IconButton(
+                  icon: Icon(
+                    JIcons.minus_circle,
+                    color: Palette.colorPrimary,
                   ),
+                  onPressed: () {
+                    if (quantity > 1)
+                      setState(() {
+                        quantity -= 1;
+                      });
+                  },
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Text(
                     "$quantity",
                     style: Styles.hugeBlueBlackTitle,
                   ),
                 ),
-                ClipOval(
-                  child: Material(
-                    color: Colors.white, // button color
-                    child: InkWell(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          Res.plus_circle,
-                          color: Palette.colorPrimary,
-                          width: 24,
-                          height: 24,
-                        ),
-                      ),
-                      onTap: () {
-                        if (quantity < 100)
-                          setState(() {
-                            quantity += 1;
-                          });
-                      },
-                    ),
+                IconButton(
+                  icon: Icon(
+                    JIcons.plus_circle,
+                    color: Palette.colorPrimary,
                   ),
+                  onPressed: () {
+                    if (quantity < 100)
+                      setState(() {
+                        quantity += 1;
+                      });
+                  },
                 ),
               ],
             ),
@@ -180,6 +159,8 @@ class FoodDetailPageState extends State<FoodDetailPage> {
       ),
     );
   }
+
+
 }
 
 class MyDynamicHeader extends SliverPersistentHeaderDelegate {

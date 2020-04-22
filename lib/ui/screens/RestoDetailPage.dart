@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nekxolivro/ui/components/RestoFoodView.dart';
+import 'package:nekxolivro/values/JIcon.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/Styles.dart';
@@ -96,11 +96,10 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
                       padding: const EdgeInsets.all(10.0),
                       child: Icon(
                         Res.backIcon,
-                        size: 26,
                         color: Palette.colorPrimary,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: ()=>Navigator.pop(context),
                   ),
                 ),
               ),
@@ -112,11 +111,10 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
                   child: InkWell(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: SvgPicture.asset(
-                        Res.search_icon,
+                      child: Icon(
+                        JIcons.search,
+                        size: 22,
                         color: Palette.colorPrimary,
-                        width: 24,
-                        height: 24,
                       ),
                     ),
                     onTap: () {},
@@ -138,7 +136,7 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
         IconButton(
             onPressed: () => null,
             icon: Icon(
-              Icons.search,
+              JIcons.search,
               color: Palette.colorPrimary,
             ))
       ],
