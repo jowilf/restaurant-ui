@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nekxolivro/ui/components/JDivider.dart';
+import 'package:nekxolivro/utils/dialog_inseat_defeat.dart';
 import 'package:nekxolivro/values/JIcon.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatefulWidget {
+  @override
+  State createState() => HomeAppBarState();
+}
+
+class HomeAppBarState extends State<HomeAppBar> {
+  int aId = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,30 +34,25 @@ class HomeAppBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Livraison à",
-                        style: TextStyle(
-                            color: Palette.greyText,
-                            fontSize: 16,
-                            fontFamily: StringRes.Avenir_Heavy),
+                        "Lieu de livraison",
+                        style: TextStyle(color: Palette.greyText, fontSize: 16),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2.0),
                         child: RichText(
                             text: TextSpan(
-                                text: "Lieu actuel ",
+                                text: "Emplacement actuel",
                                 style: TextStyle(
                                     color: Palette.colorBlueBlack,
-                                    fontFamily: StringRes.Avenir_Book,
+                                    fontFamily: StringRes.Avenir_Heavy,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20),
                                 children: [
                               WidgetSpan(
-                                  child: RotatedBox(
-                                      quarterTurns: 1,
-                                      child: Icon(
-                                        CupertinoIcons.right_chevron,
-                                        color: Palette.colorPrimary,
-                                      )))
+                                  child: Icon(
+                                Icons.arrow_drop_down,
+                                color: Palette.colorBlueBlack,
+                              ))
                             ])),
                       )
                     ],
@@ -140,6 +144,134 @@ class HomeAppBar extends StatelessWidget {
   }
 
   _adressDialog(context) {
+    showDialogWithInsets(
+        context: context,
+        edgeInsets: EdgeInsets.symmetric(horizontal: 8),
+        builder: (context) {
+          double dialogRadius = 5.0;
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(dialogRadius)),
+              backgroundColor: Colors.white,
+              child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 10),
+                        child: Text(
+                          "Sélectionner l'adresse de livraison",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: StringRes.Avenir_Heavy,
+                              color: Palette.colorBlueBlack),
+                        ),
+                      ),
+                      JDivider(),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.place,
+                              color: Palette.greyText,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Text(
+                              "Emplacement actuel",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: StringRes.Avenir_Book,
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                      JDivider(),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.flag,
+                              color: Palette.greyText,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Text(
+                              "Au Bureau",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: StringRes.Avenir_Book,
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                      JDivider(),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.flag,
+                              color: Palette.greyText,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Text(
+                              "Chez Blanche",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: StringRes.Avenir_Book,
+                              ),
+                            )),
+                            Icon(Icons.check_circle,color: Palette.colorBlue,)
+                          ],
+                        ),
+                      ),
+                      JDivider(),
+                      InkWell(
+                        onTap: () => null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.add,
+                                color: Palette.colorPrimary,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                  child: Text(
+                                "Nouvelle adresse de livraison",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Palette.colorPrimary,
+                                  fontFamily: StringRes.Avenir_Book,
+                                ),
+                              )),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )));
+        });
+  }
+
+  _adressBottomDialog(context) {
     showModalBottomSheet(
         context: context,
         backgroundColor: Palette.whiteBackGround,
@@ -223,7 +355,15 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Radio(value: index, groupValue: 1, onChanged: (val) {})
+          Radio(
+              value: index,
+              groupValue: aId,
+              onChanged: (val) {
+                setState(() {
+                  print('change');
+                  aId = val;
+                });
+              })
         ],
       );
 }
