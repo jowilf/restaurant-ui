@@ -7,4 +7,5 @@ class AppRoutes {
   static const String phoneVerification = "/phoneVerification";
   static const String forgotPassword = "/forgotPassword";
   static const String resetPassword = "/resetPassword";
+  static const String location_picker = "/location_picker";
 }

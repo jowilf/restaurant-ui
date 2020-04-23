@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekxolivro/ui/components/JDivider.dart';
 import 'package:nekxolivro/utils/dialog_inseat_defeat.dart';
+import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/JIcon.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -271,7 +272,8 @@ class HomeAppBarState extends State<HomeAppBar> {
               JDivider()
             ]);
           children.add(InkWell(
-            onTap: () => null,
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.location_picker),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Row(

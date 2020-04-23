@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:nekxolivro/ui/screens/FoodDetailPage.dart';
 import 'package:nekxolivro/ui/screens/ForgotPasswordPage.dart';
 import 'package:nekxolivro/ui/screens/HomePage.dart';
+import 'package:nekxolivro/ui/screens/LocationPickerPage.dart';
 import 'package:nekxolivro/ui/screens/LoginPage.dart';
 import 'package:nekxolivro/ui/screens/PhoneVerificationPage.dart';
 import 'package:nekxolivro/ui/screens/RegisterPage.dart';
@@ -75,6 +75,8 @@ class MyApp extends StatelessWidget {
         return RestoDetailPage();
       case AppRoutes.foodDetail:
         return FoodDetailPage();
+      case AppRoutes.location_picker:
+        return LocationPickerPage();
     }
   }
 }
