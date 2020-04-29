@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nekxolivro/ui/screens/AccountScreen.dart';
 import 'package:nekxolivro/ui/screens/FoodDetailPage.dart';
 import 'package:nekxolivro/ui/screens/ForgotPasswordPage.dart';
 import 'package:nekxolivro/ui/screens/HomePage.dart';
@@ -77,6 +78,8 @@ class MyApp extends StatelessWidget {
         return FoodDetailPage();
       case AppRoutes.location_picker:
         return LocationPickerPage();
+      case AppRoutes.account:
+        return AccountScreen();
     }
   }
 }

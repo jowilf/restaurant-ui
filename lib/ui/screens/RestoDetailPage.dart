@@ -20,6 +20,41 @@ class RestoDetailPageState extends State<RestoDetailPage> {
       pinned: true,
       delegate: MyDynamicHeader(),
     ));
+    children.add(SliverList(
+      delegate: SliverChildListDelegate([
+        Container(
+          padding: EdgeInsets.all(15),
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Mimi's",
+                style: TextStyle(
+                    color: Palette.colorBlueBlack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Africain - Pancake - Dessert",
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+              RichText(
+                  text: TextSpan(children: [
+                WidgetSpan(
+                    child: Icon(
+                  Icons.info_outline,
+                  color: Palette.colorPrimary,
+                ))
+              ]))
+            ],
+          ),
+        )
+      ]),
+    ));
     for (String plat in plats) {
       children.add(SliverList(
         delegate: SliverChildListDelegate([
@@ -99,7 +134,7 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
                         color: Palette.colorPrimary,
                       ),
                     ),
-                    onTap: ()=>Navigator.pop(context),
+                    onTap: () => Navigator.pop(context),
                   ),
                 ),
               ),

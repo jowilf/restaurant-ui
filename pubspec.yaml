@@ -72,9 +72,9 @@ flutter:
     - family: Avenir-Light
       fonts:
         - asset: assets/fonts/Avenir-Light.otf
-    - family: CustomIcons
+    - family: JIcons
       fonts:
-        - asset: assets/fonts/CustomIcons.ttf
+        - asset: assets/fonts/JIcons.ttf
 
   #
   # For details regarding fonts from package dependencies,

@@ -77,7 +77,7 @@ class HomeAppBarState extends State<HomeAppBar> {
                           color: Palette.colorPrimary,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: ()=>Navigator.pushNamed(context, AppRoutes.account),
                     ),
                   ),
                 ),
@@ -175,7 +175,7 @@ class HomeAppBarState extends State<HomeAppBar> {
                 child: Row(
                   children: <Widget>[
                     Icon(
-                      Icons.place,
+                      Icons.near_me,
                       color: Palette.greyText,
                     ),
                     SizedBox(
@@ -209,7 +209,7 @@ class HomeAppBarState extends State<HomeAppBar> {
                   child: Row(
                     children: <Widget>[
                       Icon(
-                        Icons.flag,
+                        JIcons.pin,
                         color: Palette.greyText,
                       ),
                       SizedBox(

@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:nekxolivro/ui/components/FoodHorizontal.dart';
 import 'package:nekxolivro/ui/components/FoodView.dart';
 import 'package:nekxolivro/ui/components/HomeAppBar.dart';
+import 'package:nekxolivro/ui/components/JDivider.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/StringRes.dart';
@@ -35,11 +36,17 @@ class HomePageState extends State<HomePage> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
                       if (index.isEven)
-                        return Divider(
-                          color: Palette.greyDark,
+                        return JDivider(
+                          height: 0.3,
                         );
-                      return FoodView(
-                        index: index,
+                      return Material(
+                        child: InkWell(
+                          onTap: () =>
+                              Navigator.pushNamed(context, AppRoutes.restoDetail),
+                          child: FoodView(
+                            index: index,
+                          ),
+                        ),
                       );
                     }, childCount: 3 * 2 + 1),
                   ),

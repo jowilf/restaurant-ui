@@ -117,7 +117,7 @@ class FoodDetailPageState extends State<FoodDetailPage> {
       }, childCount: 44),
     ));*/
     return Scaffold(
-      backgroundColor: Palette.colorGrey,
+      backgroundColor: Palette.colorGreyBack,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[

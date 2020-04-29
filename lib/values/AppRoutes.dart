@@ -8,4 +8,5 @@ class AppRoutes {
   static const String forgotPassword = "/forgotPassword";
   static const String resetPassword = "/resetPassword";
   static const String location_picker = "/location_picker";
+  static const String account = "/account";
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nekxolivro/values/Palette.dart';
 
 class JDivider extends StatelessWidget {
-  int height;
+  double height;
 
   JDivider({this.height});
 

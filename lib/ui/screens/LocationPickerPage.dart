@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:nekxolivro/ui/components/JDivider.dart';
 import 'package:nekxolivro/values/Palette.dart';
+import 'package:nekxolivro/values/StringRes.dart';
 
 class LocationPickerPage extends StatefulWidget {
   @override
@@ -13,9 +15,10 @@ class LocationPickerPage extends StatefulWidget {
 class LocationPickerPageState extends State<LocationPickerPage> {
   Completer<GoogleMapController> _controller = Completer();
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(6.370293,2.391236),
+    zoom: 14,
   );
+  static final _min_max_zoom = MinMaxZoomPreference(11, 22);
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
   void _onMapCreated(GoogleMapController controller) {
@@ -26,11 +29,11 @@ class LocationPickerPageState extends State<LocationPickerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.whiteBackGround,
-      body: GoogleMap(
+      /*body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: _kGooglePlex,
-      ),
-      /*body: SafeArea(
+      ),*/
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
@@ -38,10 +41,10 @@ class LocationPickerPageState extends State<LocationPickerPage> {
             Expanded(
               child: GoogleMap(
                 onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: _center,
-                  zoom: 11.0,
-                ),
+                myLocationButtonEnabled: true,
+                myLocationEnabled: true,
+                minMaxZoomPreference: _min_max_zoom,
+                initialCameraPosition: _kGooglePlex,
               ),
             ),
             Padding(
@@ -138,7 +141,7 @@ class LocationPickerPageState extends State<LocationPickerPage> {
             )
           ],
         ),
-      ),*/
+      ),
     );
   }
 }
