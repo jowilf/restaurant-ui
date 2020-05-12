@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class Palette {
   static const colorPrimary = Color(0xffff8c29);
   static const colorPrimaryLight = Color(0xFFFDEDD4);
@@ -9,7 +11,7 @@ class Palette {
   static const colorBlack = Color(0xff242a37);
   static const colorBlueBlack = Color(0xff091F44);
   static const colorGrey = Color(0xfff1f2f6);
-  static const colorGreyBack = Color(0xfff1f2f6);
+  static Color colorGreyBack = Colors.grey.shade50;
   static const greyText = Color(0xffA7A7A7);
   static const greyDark = Color(0xffD2D1D7);
   static const whiteBackGround = Color(0xffffffff);

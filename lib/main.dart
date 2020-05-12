@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Palette.colorPrimary,
       ),
       initialRoute: '/',
+      navigatorObservers: [HeroController()],
       onGenerateRoute: (RouteSettings settings) {
         return MaterialPageRoute(
           builder: (BuildContext context) => makeRoute(
@@ -71,9 +72,9 @@ class MyApp extends StatelessWidget {
       case AppRoutes.register:
         return RegisterPage();
       case AppRoutes.phoneVerification:
-        return PhoneVerificationPage();
+        return PhoneVerificationPage(arguments);
       case AppRoutes.restoDetail:
-        return RestoDetailPage();
+        return RestoDetailPage(arguments);
       case AppRoutes.foodDetail:
         return FoodDetailPage();
       case AppRoutes.location_picker:

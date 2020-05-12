@@ -41,8 +41,9 @@ class HomePageState extends State<HomePage> {
                         );
                       return Material(
                         child: InkWell(
-                          onTap: () =>
-                              Navigator.pushNamed(context, AppRoutes.restoDetail),
+                          onTap: () => Navigator.pushNamed(
+                              context, AppRoutes.restoDetail,
+                              arguments: index),
                           child: FoodView(
                             index: index,
                           ),

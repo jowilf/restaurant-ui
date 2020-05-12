@@ -40,5 +40,6 @@ class StringRes {
       "En créant votre compte, vous indiquez que vous avez lu et acceptez nos ";
   static const String termes_et_conditions =
       "Conditions générales d'utilisation";
+  static const String ISO_CODE = "BJ";
 
 }

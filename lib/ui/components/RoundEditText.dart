@@ -46,7 +46,7 @@ class RoundEditTextState extends State<RoundEditText> {
         controller: controller,
         onChanged: (newValue) =>
             this.setState(() => canShowPrefix = newValue != ""),
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, color: Palette.colorBlack),
         decoration: InputDecoration(
             prefixText:
                 (canShowPrefix && prefixText != null) ? prefixText + "  " : "",

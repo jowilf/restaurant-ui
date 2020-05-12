@@ -16,7 +16,7 @@ class AccountScreen extends StatelessWidget {
               elevation: 1,
               color: Colors.white,
               child: InkWell(
-                onTap: ()=>null,
+                onTap: () => null,
                 child: Container(
                   padding: EdgeInsets.all(15),
                   width: double.infinity,
@@ -28,8 +28,16 @@ class AccountScreen extends StatelessWidget {
                         Icons.local_offer,
                         color: Palette.greyDark,
                       ),
-                      SizedBox(width: 10,),
-                      Expanded(child: Text("Mes commandes",style: TextStyle(fontSize: 20),)),Icon(
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Text(
+                        "Mes commandes",
+                        style: TextStyle(
+                            fontSize: 20, color: Palette.colorBlueBlack),
+                      )),
+                      Icon(
                         Icons.navigate_next,
                         color: Palette.greyDark,
                       ),

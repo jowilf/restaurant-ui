@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:libphonenumber/libphonenumber.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
+import 'package:nekxolivro/utils/Utils.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
 import 'package:nekxolivro/values/Palette.dart';
 import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+
+TextEditingController _phoneNumber = TextEditingController();
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -43,6 +46,7 @@ class RegisterPageState extends State<RegisterPage> {
               hintText: StringRes.phone,
               prefixText: StringRes.phone_code,
               inputType: TextInputType.phone,
+              controller: _phoneNumber,
             ),
             SizedBox(
               height: 10,
@@ -64,7 +68,18 @@ class RegisterPageState extends State<RegisterPage> {
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30),
                     ),
-                    onPressed: () => register(context),
+                    onPressed: () async {
+                      try {
+                        bool isValid = await PhoneNumberUtil.isValidPhoneNumber(
+                            phoneNumber: _phoneNumber.text, isoCode: 'BJ');
+                        if (isValid) {
+                          register(context, _phoneNumber.text);
+                        } else
+                          Utils.toast("Entrez un numero de téléphone valide");
+                      } on Exception catch (e) {
+                        Utils.toast("Entrez un numero de téléphone valide");
+                      }
+                    },
                     child: Container(
                       padding: EdgeInsets.all(15),
                       child: Text(
@@ -126,44 +141,62 @@ class RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void register(BuildContext context) {
-    var alertStyle = AlertStyle(
-      descStyle: TextStyle(fontWeight: FontWeight.bold),
-      overlayColor: Colors.black54,
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-    );
-    Alert(
-        context: context,
-        title: "Nous allons vérifier votre numero",
-        style: alertStyle,
-        content: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-                text: "Êtes vous sur que le numero",
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Palette.greyText,
-                    fontFamily: StringRes.Avenir_Book),
-                children: [
-                  TextSpan(
-                      text: " 62374698 ",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  TextSpan(text: "est correct, ou voulez-vous le changer")
-                ])),
-        buttons: [
-          DialogButton(
-            color: Palette.colorPrimary,
-            child: Text(
-              "Continuer",
-              style: TextStyle(color: Colors.white, fontSize: 20),
+  void register(BuildContext context, phoneNumber) async {
+    var regionInfo = await PhoneNumberUtil.getRegionInfo(
+        phoneNumber: _phoneNumber.text, isoCode: StringRes.ISO_CODE);
+    var btnStyle =
+        TextStyle(fontFamily: StringRes.Avenir_Heavy, color: Palette.colorBlue);
+    var dialog = AlertDialog(
+      title: Text("Nous allons vérifier votre numero",
+          style: TextStyle(
+              color: Palette.colorBlueBlack,
+              fontFamily: StringRes.Avenir_Heavy)),
+      content: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+              text: "Êtes vous sur que le numero",
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Palette.colorBlack,
+                  fontFamily: StringRes.Avenir_Book),
+              children: [
+                TextSpan(
+                    text: " ${regionInfo.formattedPhoneNumber} ",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: "est correct, ou voulez-vous le changer")
+              ])),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      actions: <Widget>[
+        FlatButton(
+            highlightColor: Palette.greyDark,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                "Changer",
+                style: btnStyle,
+              ),
             ),
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, AppRoutes.phoneVerification);
-            },
-          )
-        ]).show();
+            onPressed: () => Navigator.pop(context)),
+        FlatButton(
+          highlightColor: Palette.greyDark,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              "Vérifier",
+              style: btnStyle,
+            ),
+          ),
+          onPressed: () async {
+            await Navigator.popAndPushNamed(
+                context, AppRoutes.phoneVerification,
+                arguments: "+229$phoneNumber");
+          },
+        )
+      ],
+    );
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (context) => dialog);
   }
 }

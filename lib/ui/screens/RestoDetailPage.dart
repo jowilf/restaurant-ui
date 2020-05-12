@@ -7,18 +7,26 @@ import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
 class RestoDetailPage extends StatefulWidget {
+  int id = 0;
+
+  RestoDetailPage(this.id);
+
   @override
-  State createState() => RestoDetailPageState();
+  State createState() => RestoDetailPageState(id);
 }
 
 class RestoDetailPageState extends State<RestoDetailPage> {
+  int id = 0;
+
+  RestoDetailPageState(this.id);
+
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
     List<String> plats = ["Entrées", "Résistant", "Déssert", "Boissons"];
     children.add(SliverPersistentHeader(
       pinned: true,
-      delegate: MyDynamicHeader(),
+      delegate: MyDynamicHeader(id),
     ));
     children.add(SliverList(
       delegate: SliverChildListDelegate([
@@ -42,14 +50,14 @@ class RestoDetailPageState extends State<RestoDetailPage> {
                 "Africain - Pancake - Dessert",
                 style: TextStyle(color: Colors.grey.shade600),
               ),
-              RichText(
+              /*RichText(
                   text: TextSpan(children: [
                 WidgetSpan(
                     child: Icon(
                   Icons.info_outline,
                   color: Palette.colorPrimary,
                 ))
-              ]))
+              ]))*/
             ],
           ),
         )
@@ -81,6 +89,9 @@ class RestoDetailPageState extends State<RestoDetailPage> {
 
 class MyDynamicHeader extends SliverPersistentHeaderDelegate {
   double percentage = 1;
+  int id;
+
+  MyDynamicHeader(this.id);
 
   @override
   Widget build(
@@ -88,27 +99,33 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(builder: (context, constraints) {
       final double percentage =
           (constraints.maxHeight - minExtent) / (maxExtent - minExtent);
-      return Stack(
-        children: <Widget>[
-          Container(
-            height: constraints.maxHeight,
-            child: Opacity(
-              opacity: percentage > 0.5 ? 1 : 2 * percentage,
-              child: Image.asset(
-                Res.login_back,
-                fit: BoxFit.cover,
+      return Container(
+        color: Colors.white,
+        child: Stack(
+          children: <Widget>[
+            Hero(
+              tag: id,
+              child: Container(
                 height: constraints.maxHeight,
-                width: double.infinity,
+                child: Opacity(
+                  opacity: percentage > 0.5 ? 1 : 2 * percentage,
+                  child: Image.asset(
+                    Res.login_back,
+                    fit: BoxFit.cover,
+                    height: constraints.maxHeight,
+                    width: double.infinity,
+                  ),
+                ),
               ),
             ),
-          ),
-          Opacity(
-              opacity: percentage > 0.2 ? 0 : -5 * percentage + 1,
-              child: appBar(context)),
-          Opacity(
-              opacity: percentage < 0.5 ? 0 : 2 * percentage - 1,
-              child: expandedAppBar(context)),
-        ],
+            Opacity(
+                opacity: percentage > 0.2 ? 0 : -5 * percentage + 1,
+                child: appBar(context)),
+            Opacity(
+                opacity: percentage < 0.5 ? 0 : 2 * percentage - 1,
+                child: expandedAppBar(context)),
+          ],
+        ),
       );
     });
   }

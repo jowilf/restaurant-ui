@@ -16,19 +16,22 @@ class FoodView extends StatelessWidget {
       padding: EdgeInsets.all(5),
       child: Row(
         children: <Widget>[
-          Card(
-            elevation: 3,
-            //margin: EdgeInsets.symmetric(horizontal: 20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                Res.login_back,
-                height: 70.0,
-                width: 70.0,
-                fit: BoxFit.cover,
+          Hero(
+            tag: index,
+            child: Card(
+              elevation: 1,
+              //margin: EdgeInsets.symmetric(horizontal: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.asset(
+                  Res.login_back,
+                  height: 70.0,
+                  width: 70.0,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

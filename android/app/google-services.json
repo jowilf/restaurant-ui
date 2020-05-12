@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "405801011586",
+    "firebase_url": "https://upheld-ellipse-275116.firebaseio.com",
+    "project_id": "upheld-ellipse-275116",
+    "storage_bucket": "upheld-ellipse-275116.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405801011586:android:57c5994305e2354ff0279b",
+        "android_client_info": {
+          "package_name": "com.joapp.nekxolivro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405801011586-p5d13tnjunlri1rclepu6iipt23vhn7h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joapp.nekxolivro",
+            "certificate_hash": "98c2faec7e62a63d333ec38f755782c6d55ea37b"
+          }
+        },
+        {
+          "client_id": "405801011586-pdlm87761fe1hg4j40h6qea86a4ies6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxjC-6pKMCyMLUOw-B8A0Ob0phNbUrKAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405801011586-pdlm87761fe1hg4j40h6qea86a4ies6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
