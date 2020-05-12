@@ -11,7 +11,7 @@ class JDivider extends StatelessWidget {
     return SizedBox(
       height: height ?? 1,
       child: Container(
-        color: Palette.greyDark,
+        color: Colors.grey.shade300,
       ),
     );
   }
