@@ -6,19 +6,26 @@ import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
 class FoodDetailPage extends StatefulWidget {
+  int id;
+
+  FoodDetailPage(this.id);
+
   @override
-  State createState() => FoodDetailPageState();
+  State createState() => FoodDetailPageState(id);
 }
 
 class FoodDetailPageState extends State<FoodDetailPage> {
   int quantity = 1;
+  int id;
+
+  FoodDetailPageState(this.id);
 
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
     children.add(SliverPersistentHeader(
       pinned: true,
-      delegate: MyDynamicHeader(),
+      delegate: MyDynamicHeader(id),
     ));
     children.add(SliverList(
       delegate: SliverChildListDelegate([
@@ -33,17 +40,19 @@ class FoodDetailPageState extends State<FoodDetailPage> {
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Expanded(
                       child: Text(
                         "Burger",
                         maxLines: 2,
                         style: TextStyle(
-                            fontFamily: StringRes.Avenir_Heavy, fontSize: 16),
+                            fontFamily: StringRes.Avenir_Heavy, fontSize: 20),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    Text("3 500 CFA", style: Styles.smallTextGreyBold),
+                    Text("3 500 CFA", style: Styles.priceStyle),
                   ],
                 ),
                 SizedBox(height: 5),
@@ -63,6 +72,7 @@ class FoodDetailPageState extends State<FoodDetailPage> {
         )
       ]),
     ));
+    //for (int i = 0; i < 20; i++)
     children.add(SliverList(
       delegate: SliverChildListDelegate([
         Card(
@@ -159,12 +169,13 @@ class FoodDetailPageState extends State<FoodDetailPage> {
       ),
     );
   }
-
-
 }
 
 class MyDynamicHeader extends SliverPersistentHeaderDelegate {
   double percentage = 1;
+  int id;
+
+  MyDynamicHeader(this.id);
 
   @override
   Widget build(
@@ -174,15 +185,18 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
           (constraints.maxHeight - minExtent) / (maxExtent - minExtent);
       return Stack(
         children: <Widget>[
-          Container(
-            height: constraints.maxHeight,
-            child: Opacity(
-              opacity: percentage > 0.5 ? 1 : 2 * percentage,
-              child: Image.asset(
-                Res.login_back,
-                fit: BoxFit.cover,
-                height: constraints.maxHeight,
-                width: double.infinity,
+          Hero(
+            tag: "food$id",
+            child: Container(
+              height: constraints.maxHeight,
+              child: Opacity(
+                opacity: percentage > 0.5 ? 1 : 2 * percentage,
+                child: Image.asset(
+                  Res.login_back,
+                  fit: BoxFit.cover,
+                  height: constraints.maxHeight,
+                  width: double.infinity,
+                ),
               ),
             ),
           ),
@@ -232,7 +246,7 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
       automaticallyImplyLeading: true,
       elevation: 2.0,
       backgroundColor: Colors.white,
-      title: Text("Mimi's"),
+      title: Text("Burger"),
       leading: IconButton(
         icon: Icon(
           Res.closeIcon,

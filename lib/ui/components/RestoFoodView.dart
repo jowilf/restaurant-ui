@@ -5,12 +5,17 @@ import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
 class RestoFoodView extends StatelessWidget {
+  int id;
+
+  RestoFoodView(this.id);
+
   @override
   Widget build(BuildContext context) {
+    print("food$id")     ;
     return Material(
       color: Colors.white,
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, AppRoutes.foodDetail),
+        onTap: () => Navigator.pushNamed(context, AppRoutes.foodDetail,arguments: id),
         child: Container(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -34,19 +39,22 @@ class RestoFoodView extends StatelessWidget {
                     ],
                   ),
                 ),
-                Card(
-                  elevation: 3,
-                  //margin: EdgeInsets.symmetric(horizontal: 20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
-                    child: Image.asset(
-                      Res.login_back,
-                      height: 70.0,
-                      width: 70.0,
-                      fit: BoxFit.cover,
+                Hero(
+                  tag: "food$id",
+                  child: Card(
+                    elevation: 1,
+                    //margin: EdgeInsets.symmetric(horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.asset(
+                        Res.login_back,
+                        height: 70.0,
+                        width: 70.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

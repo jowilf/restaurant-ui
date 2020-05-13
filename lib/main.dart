@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
       case AppRoutes.restoDetail:
         return RestoDetailPage(arguments);
       case AppRoutes.foodDetail:
-        return FoodDetailPage();
+        return FoodDetailPage(arguments);
       case AppRoutes.location_picker:
         return LocationPickerPage();
       case AppRoutes.account:

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nekxolivro/ui/components/JDivider.dart';
 import 'package:nekxolivro/utils/dialog_inseat_defeat.dart';
 import 'package:nekxolivro/values/AppRoutes.dart';
@@ -77,7 +78,8 @@ class HomeAppBarState extends State<HomeAppBar> {
                           color: Palette.colorPrimary,
                         ),
                       ),
-                      onTap: ()=>Navigator.pushNamed(context, AppRoutes.account),
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoutes.account),
                     ),
                   ),
                 ),
@@ -111,8 +113,8 @@ class HomeAppBarState extends State<HomeAppBar> {
                             children: [
                               WidgetSpan(
                                   child: Icon(
-                                JIcons.search,
-                                size: 17,
+                                //Icons.search,
+                                FontAwesomeIcons.search, size: 17,
                                 color: Palette.greyText,
                               )),
                               TextSpan(text: " "),

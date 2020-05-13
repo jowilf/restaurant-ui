@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nekxolivro/ui/components/RestoFoodView.dart';
 import 'package:nekxolivro/values/JIcon.dart';
 import 'package:nekxolivro/values/Palette.dart';
@@ -63,6 +64,7 @@ class RestoDetailPageState extends State<RestoDetailPage> {
         )
       ]),
     ));
+    int i = 0;
     for (String plat in plats) {
       children.add(SliverList(
         delegate: SliverChildListDelegate([
@@ -77,13 +79,13 @@ class RestoDetailPageState extends State<RestoDetailPage> {
       ));
       children.add(SliverList(
         delegate: SliverChildBuilderDelegate((context, index) {
-          return RestoFoodView();
+          return RestoFoodView(i++);
         }, childCount: 4),
       ));
     }
     return Scaffold(
         backgroundColor: Palette.colorGrey,
-        body: CustomScrollView(slivers: children));
+        body: CustomScrollView(slivers: children,physics:BouncingScrollPhysics(),));
   }
 }
 
@@ -164,8 +166,8 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Icon(
-                        JIcons.search,
-                        size: 22,
+                        FontAwesomeIcons.search,
+                        size: 20,
                         color: Palette.colorPrimary,
                       ),
                     ),
