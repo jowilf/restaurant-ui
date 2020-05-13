@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nekxolivro/ui/components/RestoFoodView.dart';
@@ -18,13 +17,18 @@ class RestoDetailPage extends StatefulWidget {
 
 class RestoDetailPageState extends State<RestoDetailPage> {
   int id = 0;
+  List<String> plats = ["Entrées", "Résistant", "Déssert", "Boissons"];
+  List<GlobalKey> keys = List.generate(4, (index) => GlobalKey());
 
   RestoDetailPageState(this.id);
+
+  void scrollToIndex(index) {
+    Scrollable.ensureVisible(keys[index].currentContext);
+  }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
-    List<String> plats = ["Entrées", "Résistant", "Déssert", "Boissons"];
     children.add(SliverPersistentHeader(
       pinned: true,
       delegate: MyDynamicHeader(id),
@@ -51,6 +55,17 @@ class RestoDetailPageState extends State<RestoDetailPage> {
                 "Africain - Pancake - Dessert",
                 style: TextStyle(color: Colors.grey.shade600),
               ),
+              GestureDetector(
+                onTap: () {
+                  scrollToIndex(3);
+                  print("taped");
+                },
+                child: Container(
+                  height: 100,
+                  width: double.infinity,
+                  color: Colors.blue,
+                ),
+              )
               /*RichText(
                   text: TextSpan(children: [
                 WidgetSpan(
@@ -65,13 +80,14 @@ class RestoDetailPageState extends State<RestoDetailPage> {
       ]),
     ));
     int i = 0;
-    for (String plat in plats) {
+    for (int k = 0; k < plats.length; k++) {
       children.add(SliverList(
         delegate: SliverChildListDelegate([
           Padding(
+            key: keys[k],
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              plat,
+              plats[k],
               style: Styles.mediumBlueBlackTitle,
             ),
           )
@@ -85,7 +101,10 @@ class RestoDetailPageState extends State<RestoDetailPage> {
     }
     return Scaffold(
         backgroundColor: Palette.colorGrey,
-        body: CustomScrollView(slivers: children,physics:BouncingScrollPhysics(),));
+        body: CustomScrollView(
+          slivers: children,
+          physics: BouncingScrollPhysics(),
+        ));
   }
 }
 
