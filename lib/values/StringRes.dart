@@ -33,9 +33,9 @@ class StringRes {
       "Vous n'avez pas un un compte?  ";
   static const String vous_navez_pas_recu_code =
       "Vous n'avez reçu aucun code?  ";
-  static const String Avenir_Book = "Avenir-Book";
-  static const String Avenir_Light = "Avenir-Light";
-  static const String Avenir_Heavy = "Avenir-Heavy";
+  static const String Avenir_Book = "AirbnbCereal-Book";
+  static const String Avenir_Light = "AirbnbCereal-Light";
+  static const String Avenir_Heavy = "AirbnbCereal-Medium";
   static const String text_avant_conditions =
       "En créant votre compte, vous indiquez que vous avez lu et acceptez nos ";
   static const String termes_et_conditions =

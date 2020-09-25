@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:libphonenumber/libphonenumber.dart';
 import 'package:nekxolivro/ui/components/RoundEditText.dart';
 import 'package:nekxolivro/utils/Utils.dart';
@@ -9,7 +10,7 @@ import 'package:nekxolivro/values/Res.dart';
 import 'package:nekxolivro/values/StringRes.dart';
 import 'package:nekxolivro/values/Styles.dart';
 
-TextEditingController _phoneNumber = TextEditingController();
+MaskedTextController _phoneNumber = MaskedTextController(mask: "00 00 00 00");
 
 class RegisterPage extends StatefulWidget {
   @override
