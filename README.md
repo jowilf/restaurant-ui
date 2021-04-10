@@ -1,16 +1,9 @@
-# nekxolivro
+# Flutter Restaurant App UI
 
-Nekxo livro app
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="./screenshots/Home.png" alt="drawing" width="200"/>
+<img src="./screenshots/Login.png" alt="drawing" width="200"/>
+<img src="./screenshots/Register.png" alt="drawing" width="200"/>
+<img src="./screenshots/Restaurant_Menu.gif" alt="drawing" width="200"/>
+<img src="./screenshots/Food_Detail.gif" alt="drawing" width="200"/>
+<img src="./screenshots/Select_Address.png" alt="drawing" width="200"/>
+<img src="./screenshots/Map.png" alt="drawing" width="200"/>
