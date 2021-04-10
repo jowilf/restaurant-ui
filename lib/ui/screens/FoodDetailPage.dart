@@ -262,5 +262,5 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
   double get maxExtent => 200.0;
 
   @override
-  double get minExtent => 80.0;
+  double get minExtent => 100.0;
 }

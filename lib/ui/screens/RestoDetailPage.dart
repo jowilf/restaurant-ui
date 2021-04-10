@@ -190,7 +190,7 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
 
   Widget appBar(context) => AppBar(
       centerTitle: false,
-      automaticallyImplyLeading: true,
+      // automaticallyImplyLeading: true,
       elevation: 2.0,
       backgroundColor: Colors.white,
       title: Text("Mimi's"),
@@ -217,5 +217,5 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
   double get maxExtent => 200.0;
 
   @override
-  double get minExtent => 80.0;
+  double get minExtent => 100.0;
 }
