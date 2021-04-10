@@ -232,7 +232,7 @@ class MyDynamicHeader extends SliverPersistentHeaderDelegate {
                         color: Palette.colorPrimary,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () => Navigator.pop(context),
                   ),
                 ),
               ),

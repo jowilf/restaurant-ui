@@ -123,7 +123,7 @@ class LocationPickerPageState extends State<LocationPickerPage> {
               children: <Widget>[
                 Expanded(
                   child: InkWell(
-                    onTap: () => null,
+                    onTap: () => Navigator.pop(context),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 30),
                       child: Text(

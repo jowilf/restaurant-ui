@@ -27,7 +27,7 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
 
   @override
   void initState() {
-    sendSms();
+    // sendSms();
     super.initState();
   }
 
@@ -35,7 +35,8 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
   Widget build(BuildContext context) {
     //FlutterStatusbarcolor.setStatusBarColor(Colors.white);
 
-    var regionInfo = PhoneNumberUtil.getRegionInfo(phoneNumber: phoneNumber, isoCode: 'BJ');
+    var regionInfo =
+        PhoneNumberUtil.getRegionInfo(phoneNumber: phoneNumber, isoCode: 'BJ');
     print(regionInfo);
     return Scaffold(
       backgroundColor: Palette.whiteBackGround,
@@ -63,12 +64,15 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                 text: TextSpan(
                     text: StringRes.en_attente_otp,
                     style: TextStyle(
-                        color: Palette.greyText, fontSize: 15, fontFamily: StringRes.Avenir_Book),
+                        color: Palette.greyText,
+                        fontSize: 15,
+                        fontFamily: StringRes.Avenir_Book),
                     children: [
                       TextSpan(
-                          text: "62374698",
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, color: Palette.colorBlueBlack))
+                          text: phoneNumber,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Palette.colorBlueBlack))
                     ]),
               ),
             ),
@@ -93,25 +97,26 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
             Container(
               padding: EdgeInsets.only(left: 20, top: 20, right: 20),
               child: PinCodeTextField(
-                appContext: context,
                 length: 6,
+                obsecureText: false,
                 animationType: AnimationType.fade,
-                // shape: PinCodeFieldShape.box,
+                shape: PinCodeFieldShape.box,
                 animationDuration: Duration(milliseconds: 300),
-                // borderRadius: BorderRadius.all(Radius.circular(5)),
-                // fieldHeight: 40,
-                // activeColor: Palette.colorPrimary,
-                // activeFillColor: Palette.colorPrimary,
-                textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                // inactiveFillColor: Palette.colorGrey,
-                // selectedFillColor: Palette.colorGrey,
-                // selectedColor: Palette.colorPrimary,
-                // dialogContent: StringRes.voulez_vous_utiliser,
-                // dialogTitle: "Coller",
-                // affirmativeText: "Utiliser",
-                // negativeText: "Annuler",
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                fieldHeight: 40,
+                activeColor: Palette.colorPrimary,
+                activeFillColor: Palette.colorPrimary,
+                textStyle:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                inactiveFillColor: Palette.colorGrey,
+                selectedFillColor: Palette.colorGrey,
+                selectedColor: Palette.colorPrimary,
+                dialogContent: StringRes.voulez_vous_utiliser,
+                dialogTitle: "Coller",
+                affirmativeText: "Utiliser",
+                negativeText: "Annuler",
                 enableActiveFill: true,
-                // inactiveColor: Palette.colorGrey,
+                inactiveColor: Palette.colorGrey,
                 onChanged: (value) {
                   _code = value;
                 },
@@ -177,7 +182,8 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
                           TextSpan(
                             text: StringRes.renvoyer_code,
                             style: TextStyle(
-                                fontFamily: StringRes.Avenir_Heavy, color: Palette.colorPrimary),
+                                fontFamily: StringRes.Avenir_Heavy,
+                                color: Palette.colorPrimary),
                           )
                         ]),
                   ),
@@ -219,7 +225,7 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
         });
   }
 
-  void verificationFailed(FirebaseAuthException authException) {
+  void verificationFailed(AuthException authException) {
     print(authException.message);
     toast("Une erreur s'est produite. Réesayez plus tard");
   }
@@ -228,13 +234,16 @@ class PhoneVerificationPageState extends State<PhoneVerificationPage> {
     Utils.toast(text);
   }
 
-  final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {};
+  final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+      (String verificationId) {};
 
   void _signInWithPhoneNumber(String smsCode) async {
     var firebaseAuth = await FirebaseAuth.instance;
-    var _authCredential =
-        await PhoneAuthProvider.credential(verificationId: actualCode, smsCode: smsCode);
-    firebaseAuth.signInWithCredential(_authCredential).then((UserCredential auth) async {
+    var _authCredential = await PhoneAuthProvider.getCredential(
+        verificationId: actualCode, smsCode: smsCode);
+    firebaseAuth
+        .signInWithCredential(_authCredential)
+        .then((AuthResult auth) async {
       print("success authentication");
       Navigator.pop(context, true);
     }).catchError((error) {

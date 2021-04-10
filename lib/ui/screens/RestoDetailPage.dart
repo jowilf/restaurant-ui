@@ -55,17 +55,6 @@ class RestoDetailPageState extends State<RestoDetailPage> {
                 "Africain - Pancake - Dessert",
                 style: TextStyle(color: Colors.grey.shade600),
               ),
-              GestureDetector(
-                onTap: () {
-                  scrollToIndex(3);
-                  print("taped");
-                },
-                child: Container(
-                  height: 100,
-                  width: double.infinity,
-                  color: Colors.blue,
-                ),
-              )
               /*RichText(
                   text: TextSpan(children: [
                 WidgetSpan(

@@ -79,7 +79,7 @@ class HomeAppBarState extends State<HomeAppBar> {
                         ),
                       ),
                       onTap: () =>
-                          Navigator.pushNamed(context, AppRoutes.account),
+                          Navigator.pushNamed(context, AppRoutes.login),
                     ),
                   ),
                 ),
